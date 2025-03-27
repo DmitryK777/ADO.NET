@@ -36,7 +36,7 @@ namespace MoviesConnector
 			string condition = $"last_name = N'{last_name}' AND first_name = N'{first_name}'";
 			string query = $"INSERT Directors(first_name, last_name) VALUES(N'{first_name}', N'{last_name}')";
 			string cmd = $"IF NOT EXISTS (SELECT director_id FROM Directors WHERE {condition}) BEGIN {query} END";
-			Console.WriteLine(cmd);
+			//Console.WriteLine(cmd);
 			SqlCommand command = new SqlCommand(cmd, connection);
 			connection.Open();
 			command.ExecuteNonQuery();
@@ -46,7 +46,7 @@ namespace MoviesConnector
 
 		public void Select(string fields, string tables, string condition = "")
 		{
-			Console.WriteLine("--------------------------------------------------");
+			//Console.WriteLine("--------------------------------------------------");
 			// 1) Создаём подключение к базе
 			//SqlConnection connection = new SqlConnection(CONNECTION_STRING);
 
@@ -86,7 +86,7 @@ namespace MoviesConnector
 			// 5) Закрываем поток и соединение с сервером
 			reader.Close();
 			connection.Close();
-			Console.WriteLine("--------------------------------------------------");
+			//Console.WriteLine("--------------------------------------------------");
 			Console.WriteLine();
 		}
 
