@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace MoviesConnector
 {
@@ -22,7 +23,7 @@ namespace MoviesConnector
 			*/
 			//Connector connector = new Connector(CONNECTION_STRING);
 
-			Connector connector = new Connector();
+			Connector connector = new Connector(ConfigurationManager.ConnectionStrings["Movies_VPD_311"].ConnectionString);
 
 			//connector.Select("SELECT * FROM Directors");
 			//connector.Select("SELECT * FROM Movies");
@@ -38,6 +39,11 @@ namespace MoviesConnector
 				"director = director_id"
 				);
 
+			Console.WriteLine("\n------------------------------------------------------------------------\n");
+
+			Connector connector_academy = new Connector(ConfigurationManager.ConnectionStrings["VPD_311_Import"].ConnectionString);
+
+			connector_academy.Select("*", "Disciplines");
 		}
 	}
 }
