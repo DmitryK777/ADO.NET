@@ -14,20 +14,7 @@ namespace MoviesForms_HomeWork
 {
 	public partial class MainForm : Form
 	{
-		/*
-		static string CONNECTION_STRING =
-				"Data Source = (localdb)\\MSSQLLocalDB;" +
-				"Initial Catalog = Movies_VPD_311;" +
-				"Integrated Security = True;" +
-				"Connect Timeout = 30;" +
-				"Encrypt = False;" +
-				"TrustServerCertificate = False;" +
-				"ApplicationIntent = ReadWrite;" +
-				"MultiSubnetFailover = False"
-				;
-*/
 		Connector connector = new Connector();
-		// connector = new Connector(CONNECTION_STRING);
 
 		public MainForm()
 		{
