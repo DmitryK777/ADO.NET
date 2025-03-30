@@ -135,7 +135,6 @@
 			this.tabPageTeachers.Size = new System.Drawing.Size(792, 402);
 			this.tabPageTeachers.TabIndex = 4;
 			this.tabPageTeachers.Text = "Teachers";
-			this.tabPageTeachers.Click += new System.EventHandler(this.tabPageTeachers_Click);
 			// 
 			// dgvStudents
 			// 

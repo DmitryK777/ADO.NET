@@ -20,15 +20,16 @@ namespace Academy
 		{
 			CONNECTION_STRING = connectionString;
 			connection = new SqlConnection(CONNECTION_STRING);
-			AllocConsole();
-			Console.WriteLine(CONNECTION_STRING);
+			//AllocConsole();
+			//Console.WriteLine(CONNECTION_STRING);
 		}
 
-		public DataTable Select(string columns, string tables, string condition = "")
+		public DataTable Select(string columns, string tables, string condition = "", string group_by = "")
 		{
 			DataTable table = null;
 			string cmd = $"Select {columns} FROM {tables}";
-			if (condition != "") cmd += $"WHERE {condition}";
+			if (condition != "") cmd += $" WHERE {condition}";
+			if (group_by != "") cmd += $" GROUP BY {group_by}";
 
 			SqlCommand command = new SqlCommand(cmd, connection);
 			connection.Open();
