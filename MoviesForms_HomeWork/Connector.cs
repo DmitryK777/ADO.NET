@@ -17,7 +17,7 @@ namespace MoviesForms_HomeWork
 		static public int NUM_FILMS;
 		static readonly int PADDING = 70;
 
-		//public Connector() : this(ConfigurationManager.ConnectionStrings["Movies_VPD_311"].ConnectionString) { }
+		public Connector() : this(ConfigurationManager.ConnectionStrings["Movies_VPD_311"].ConnectionString) { }
 
 		public Connector(string connectionString)
 		{
@@ -70,25 +70,27 @@ namespace MoviesForms_HomeWork
 
 		public void InsertDirector(string first_name, string last_name)
 		{
+			string check = $"SELECT director_id FROM Directors WHERE last_name = N'{last_name}' AND first_name = N'{first_name}'";
+			SqlCommand check_query = new SqlCommand(check, connection);
+
+			connection.Open();
+			SqlDataReader reader = check_query.ExecuteReader();
+
+			if (reader.HasRows)
+			{
+				new Warning().ShowDialog();
+			}
+			connection.Close();
+
+
 			string query = $"INSERT Directors(first_name, last_name) VALUES(N'{first_name}', N'{last_name}')";
 			string condition = $"last_name = N'{last_name}' AND first_name = N'{first_name}'";
 			string cmd = $"IF NOT EXISTS (SELECT director_id FROM Directors WHERE {condition}) BEGIN {query} END";
 			SqlCommand command = new SqlCommand(cmd, connection);
 
-			string check = $"SELECT director_id FROM Directors WHERE last_name = N'{last_name}' AND first_name = N'{first_name}'";
-			SqlCommand check_query = new SqlCommand(check, connection);
-
-
 			connection.Open();
 			command.ExecuteNonQuery();
-
-			SqlDataReader reader = command.ExecuteReader();
-			if (reader.ToString() != "")
-			{
-				new Warning().ShowDialog();
-			}
-
-				connection.Close();
+			connection.Close();
 		}
 
 		public string Border(int fields_count, string symbol = "-")
