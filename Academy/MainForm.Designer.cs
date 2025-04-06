@@ -127,6 +127,7 @@
 			this.cbStudentsDirection.Name = "cbStudentsDirection";
 			this.cbStudentsDirection.Size = new System.Drawing.Size(356, 24);
 			this.cbStudentsDirection.TabIndex = 3;
+			this.cbStudentsDirection.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
 			// 
 			// labelGroupsInStudents
 			// 
@@ -147,6 +148,7 @@
 			this.cbStudentsGroup.Name = "cbStudentsGroup";
 			this.cbStudentsGroup.Size = new System.Drawing.Size(177, 24);
 			this.cbStudentsGroup.TabIndex = 1;
+			this.cbStudentsGroup.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
 			// 
 			// dgvStudents
 			// 
@@ -191,7 +193,7 @@
 			this.cbGroupsDirection.Name = "cbGroupsDirection";
 			this.cbGroupsDirection.Size = new System.Drawing.Size(341, 21);
 			this.cbGroupsDirection.TabIndex = 1;
-			this.cbGroupsDirection.SelectedIndexChanged += new System.EventHandler(this.cbGroupsDirection_SelectedIndexChanged);
+			this.cbGroupsDirection.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
 			// 
 			// dgvGroups
 			// 
