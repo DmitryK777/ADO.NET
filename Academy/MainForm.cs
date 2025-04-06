@@ -27,7 +27,13 @@ namespace Academy
 						"group_id, group_name, direction_name"
 						
 					),
-				new Query("*", "Directions"),
+				new Query
+					(
+						"direction_name, COUNT(DISTINCT group_id) AS N'Количество групп', COUNT(DISTINCT stud_id) AS N'Количество студентов'",
+						"Students JOIN Groups ON ([group] = group_id) RIGHT JOIN Directions ON (direction = direction_id)",
+						"",
+						"direction_name"
+					),
 				new Query("*", "Disciplines"),
 				new Query("*", "Teachers")
 			};
