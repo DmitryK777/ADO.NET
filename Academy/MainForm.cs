@@ -109,6 +109,8 @@ namespace Academy
 			LoadTab(query);
 			Console.WriteLine((sender as ComboBox).Name);
 			Console.WriteLine(e);
+
+
 		}
 
 		
