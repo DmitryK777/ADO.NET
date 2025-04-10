@@ -29,10 +29,14 @@ namespace Academy
 					),
 				new Query
 					(
-						"direction_name, COUNT(DISTINCT group_id) AS N'Количество групп', COUNT(DISTINCT stud_id) AS N'Количество студентов'",
-						"Students JOIN Groups ON ([group] = group_id) RIGHT JOIN Directions ON (direction = direction_id)",
-						"",
-						"direction_name"
+						@"direction_name, 
+						COUNT(DISTINCT group_id)	AS N'Количество групп', 
+						COUNT(DISTINCT stud_id)		AS N'Количество студентов'",
+
+						@"Students	JOIN Groups		ON ([group] = group_id) 
+						RIGHT		JOIN Directions ON (direction = direction_id)",
+						"", // WHERE
+						"direction_name" // GROOUP BY
 					),
 				new Query("*", "Disciplines"),
 				new Query("*", "Teachers")
@@ -48,9 +52,30 @@ namespace Academy
 			};
 
 
-		/// /////////////////////////////////////////////////////////////////////////////////////////
+		// //////////////////////////////////////////////////////////////////////////////////////////
+		//public Dictionary<string, int> d_directions;
+		//public Dictionary<string, int> d_groups;
+
 		public Dictionary<string, int> d_directions;
 		public Dictionary<string, int> d_groups;
+
+		public Dictionary<string, int> D_directions
+		{ 
+			get; 
+			set
+			{
+				this.d_directions = connector.GetDictionary("Directions");
+			}
+		}
+
+		public Dictionary<string, int> D_groups 
+		{ 
+			get; 
+			set
+			{
+				this.d_groups = connector.GetDictionary("Groups");
+			}
+		}
 
 		public MainForm()
 		{
@@ -70,12 +95,12 @@ namespace Academy
 			dgvStudents.DataSource = connector.Select("*", "Students");
 			statusStripCountLabel.Text = $"Количество студентов: {dgvStudents.RowCount - 1}";
 
-			d_directions = connector.GetDictionary("Directions");
-			d_groups = connector.GetDictionary("Groups");
+			//d_directions = connector.GetDictionary("Directions");
+			//d_groups = connector.GetDictionary("Groups");
 
-			cbGroupsDirection.Items.AddRange(d_directions.Select(d=>d.Key.ToString()).ToArray());
-			cbStudentsGroup.Items.AddRange(d_groups.Select(g=>g.Key.ToString()).ToArray());
-			cbStudentsDirection.Items.AddRange(d_directions.Select(d=>d.Key.ToString()).ToArray());
+			cbGroupsDirection.Items.AddRange(D_directions.Select(d=>d.Key.ToString()).ToArray()); // LINQ
+			cbStudentsGroup.Items.AddRange(D_groups.Select(g=>g.Key.ToString()).ToArray());
+			cbStudentsDirection.Items.AddRange(D_directions.Select(d=>d.Key.ToString()).ToArray());
 		}
 
 		void LoadTab(Query query = null)
@@ -100,7 +125,7 @@ namespace Academy
 			string field_name = tab_name.Substring(Array.FindLastIndex<char>(tab_name.ToCharArray(), Char.IsUpper));
 			Console.WriteLine(field_name);
 			string member_name = $"d_{field_name.ToLower()}s";
-			Console.WriteLine(member_name == nameof(d_directions));
+			Console.WriteLine(member_name == nameof(D_directions));
 			Dictionary<string, int> source = this.GetType().GetField(member_name).GetValue(this) as Dictionary<string, int>;
 			//Console.WriteLine(this.GetType().GetField(member_name).GetValue(this));
 			Console.WriteLine(this.GetType());
