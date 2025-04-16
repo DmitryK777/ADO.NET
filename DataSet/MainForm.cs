@@ -138,6 +138,8 @@ namespace AcademyDataSet
 
 		public void Print(string table)
 		{
+
+
 			Console.WriteLine("\n====================================================================\n");
 			for(int i =0; i < set.Tables[table].Columns.Count; i++)
 				Console.Write(set.Tables[table].Columns[i].Caption + "\t");
@@ -159,14 +161,18 @@ namespace AcademyDataSet
 		{
 			Console.WriteLine("\n====================================================================\n");
 			string table = "Groups";
-			for(int i = 0; i < set.Tables[table].Rows.Count; i++)
+			for (int i = 0; i < set.Tables[table].Columns.Count; i++)
+				Console.Write(set.Tables[table].Columns[i].Caption + "\t");
+			Console.Write("\tdirection_name");
+			Console.WriteLine("\n--------------------------------------------------------------------\n");
+			for (int i = 0; i < set.Tables[table].Rows.Count; i++)
 			{
 				for (int j = 0; j < set.Tables[table].Columns.Count; j++)
 				{
-					Console.Write(set.Tables[table].Rows[i][j] + "\t");
+					Console.Write(set.Tables[table].Rows[i][j] + "\t\t");
 					
 				}
-				Console.WriteLine(set.Tables[table].Rows[i].GetParentRow("GroupsDirections")["direction_name"]);
+				Console.Write(set.Tables[table].Rows[i].GetParentRow("GroupsDirections")["direction_name"]);
 				Console.WriteLine();
 			}
 			Console.WriteLine("\n====================================================================\n");
