@@ -176,7 +176,6 @@ namespace AcademyDataSet
 				for (int j = 0; j < set.Tables[table].Columns.Count; j++)
 				{
 					Console.Write(set.Tables[table].Rows[i][j] + "\t\t");
-
 				}
 
 				foreach (DataRelation relation in set.Tables[table].ParentRelations)
