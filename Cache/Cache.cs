@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using System.Timers;
 
 using System.Data.SqlClient;
 
@@ -19,11 +20,14 @@ namespace CacheLibrary
 		SqlConnection connection = null;
 		DataSet set = null; // Набор таблиц
 
+
+
 		public DataSet Set { get => set; }
 
 		public Cache(string connection_string)
 		{
-			CONNECTION_STRING = ConfigurationManager.ConnectionStrings["VPD_311_Import"].ConnectionString;
+			//CONNECTION_STRING = ConfigurationManager.ConnectionStrings["VPD_311_Import"].ConnectionString;
+			CONNECTION_STRING = connection_string;
 			connection = new SqlConnection(CONNECTION_STRING);
 
 			// 1) Создаём DataSet
