@@ -6,9 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
-using System.Timers;
 
 using System.Data.SqlClient;
+
+using System.Timers;
 
 
 
@@ -20,7 +21,7 @@ namespace CacheLibrary
 		SqlConnection connection = null;
 		DataSet set = null; // Набор таблиц
 
-
+		Timer updateTimer;
 
 		public DataSet Set { get => set; }
 
@@ -29,20 +30,24 @@ namespace CacheLibrary
 			//CONNECTION_STRING = ConfigurationManager.ConnectionStrings["VPD_311_Import"].ConnectionString;
 			CONNECTION_STRING = connection_string;
 			connection = new SqlConnection(CONNECTION_STRING);
+			Console.WriteLine(CONNECTION_STRING);
 
 			// 1) Создаём DataSet
 			set = new DataSet();
-
-			Console.WriteLine(CONNECTION_STRING);
-
 		}
+
+		
 
 		public void AddTable(string table, string columns)
 		{
+			updateTimer = new Timer(TimeSpan.FromMinutes(0.2).TotalMilliseconds); // 5 минут
+			updateTimer.Elapsed += (sender, e) => LoadData(CONNECTION_STRING, table, columns);
+			updateTimer.AutoReset = true;
+			updateTimer.Enabled = true;
+
 			// 2.1) Добавляем поля таблицу в DataSet
 			set.Tables.Add(table);
 
-			// 2.2) Добавляем поля (столбики) в таблицу
 			string[] a_columns = columns.Split(',');
 			for (int i = 0; i < a_columns.Length; i++)
 			{
@@ -53,13 +58,31 @@ namespace CacheLibrary
 			set.Tables[table].PrimaryKey =
 				new DataColumn[] { set.Tables[table].Columns[0] };
 
-			string cmd = $"SELECT {columns} FROM {table}";
-			SqlDataAdapter adapter = new SqlDataAdapter(cmd, connection);
-			adapter.Fill(set.Tables[table]);
-			Print(table);
+			LoadData(CONNECTION_STRING, table, columns); // Начальная загрузка
+
+			// 2.2) Добавляем поля (столбики) в таблицу
+			
 		}
 
-		
+		void LoadData(string connection_string, string table, string columns)
+		{
+			string cmd = $"SELECT {columns} FROM {table}";
+			try
+			{
+				using (SqlConnection connection = new SqlConnection(connection_string))
+				{
+					using (SqlDataAdapter adapter = new SqlDataAdapter(cmd, connection))
+					{
+						adapter.Fill(set.Tables[table]);
+						Print(table);
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("Ошибка при обновлении кеша: " + ex.Message);
+			}
+		}
 
 		public void AddRelation(string relation_name, string child, string parent)
 		{
