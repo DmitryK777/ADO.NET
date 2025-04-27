@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academy", "Academy\Academy.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSet", "DataSet\DataSet.csproj", "{A48A1CEF-323C-438F-9DD8-E5A5C0D1288B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF", "WPF\WPF.csproj", "{228B0EDA-23D0-4417-B5B3-0CB7A12CEE1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GRID", "GRID\GRID.csproj", "{0CC379DA-2C8B-4F14-A195-C1E68AD081B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{A48A1CEF-323C-438F-9DD8-E5A5C0D1288B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A48A1CEF-323C-438F-9DD8-E5A5C0D1288B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A48A1CEF-323C-438F-9DD8-E5A5C0D1288B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{228B0EDA-23D0-4417-B5B3-0CB7A12CEE1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{228B0EDA-23D0-4417-B5B3-0CB7A12CEE1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{228B0EDA-23D0-4417-B5B3-0CB7A12CEE1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{228B0EDA-23D0-4417-B5B3-0CB7A12CEE1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CC379DA-2C8B-4F14-A195-C1E68AD081B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CC379DA-2C8B-4F14-A195-C1E68AD081B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CC379DA-2C8B-4F14-A195-C1E68AD081B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CC379DA-2C8B-4F14-A195-C1E68AD081B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

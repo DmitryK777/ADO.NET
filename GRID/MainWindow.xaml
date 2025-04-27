@@ -1,0 +1,50 @@
+﻿<Window x:Class="GRID.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GRID"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        
+        
+        <!--<grid.rowdefinitions>
+            <rowdefinition />
+            <rowdefinition />
+            <rowdefinition />
+            <rowdefinition />
+        </grid.rowdefinitions>
+
+        <grid.columndefinitions>
+            <columndefinition />
+            <columndefinition />
+        </grid.columndefinitions>
+
+        <rectangle grid.row="0" grid.column="0"  fill = "red" />
+        <rectangle grid.row="2" grid.column="0"  fill = "blue" />
+        <rectangle grid.row="1" grid.column="1" fill = "green" />
+        <rectangle grid.row="3" grid.column="1" fill = "gray" />-->
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition />
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <Rectangle Grid.Row="0"  Fill = "Gray" />
+        <Rectangle Grid.Row="2"  Fill = "Gray" />
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.15*" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="0.2*" />
+            </Grid.ColumnDefinitions>
+            <Rectangle Grid.Column="0" Fill="Green" />
+            <Rectangle Grid.Column="1" Fill="White" />
+            <Rectangle Grid.Column="2" Fill="Blue" />
+        </Grid>
+    </Grid>
+</Window>
