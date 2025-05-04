@@ -23,8 +23,8 @@
                             <ColumnDefinition Width="0.5*" />
                             <ColumnDefinition Width="0.5*" />
                         </Grid.ColumnDefinitions>
-                        <ComboBox Grid.Column="0"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="24"/>
-                        <ComboBox Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="24"/>
+                        <ComboBox Grid.Column="0" Name="cbGroups"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="24"/>
+                        <ComboBox Grid.Column="1" Name="cbDirections"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="24"/>
                     </Grid>
                 </Grid>
             </TabItem>
