@@ -38,7 +38,7 @@
           
         <Button Name="BtnAdd" Grid.Column="0" Width="Auto" Content="Add" Background="Aqua" Click="BtnAdd_Click" />
             <Button Name="BtnDelete" Grid.Column="1" Width="Auto" Content="Delete" Background="Red" Click="BtnDelete_Click" />
-            <Button Name="BtnClear" Grid.Column="2" Width="Auto" Content="Clear" Background="Yellow" Click="BtnClear_Click" />
+            <Button Name="BtnClear" Grid.Column="2" Width="Auto" Content="Clear" Background="GreenYellow" Click="BtnClear_Click" />
 
 
         </Grid>
